@@ -1,6 +1,6 @@
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-  pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,20 +8,20 @@
 <title>Login From JSP</title>
 </head>
 <body>
-  <%
-  	Date date = new Date();
-  %>
-  My name is ${name} and my password is ${password}
-  <div>
-    Current date is
-    <%=date%></div>
-  <form action="/login" method="POST">
-    <p>
-      <font color="red">${errorMessage}</font>
-    </p>
-    Name <input name="name" /> Password <input name="password"
-      type="password" />
-    <button type="submit">Login</button>
-  </form>
+	<%
+		Date date = new Date();
+	%>
+	My name is ${name} and my password is ${password}
+	<div>
+		Current date is
+		<%=date%></div>
+	<form action="/login" method="POST">
+		<p>
+			<font color="red">${errorMessage}</font>
+		</p>
+		Name <input name="name" /> Password <input name="password"
+			type="password" />
+		<button type="submit">Login</button>
+	</form>
 </body>
 </html>
