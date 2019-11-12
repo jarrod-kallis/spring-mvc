@@ -8,5 +8,7 @@
 </head>
 <body>
   Welcome ${name}
+  <br/>
+  Now you can <a href="/todos">manage your todos</a>
 </body>
 </html>

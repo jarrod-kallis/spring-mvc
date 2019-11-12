@@ -17,6 +17,10 @@
 		</property>
 	</bean>
 
+	<!-- Allows us to import files from inside the Maven Dependencies jar's 
+		resources folder -->
+	<mvc:resources mapping="/webjars/**" location="/webjars/" />
+
 	<mvc:annotation-driven />
 
 </beans>
