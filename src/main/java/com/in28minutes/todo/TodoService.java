@@ -32,7 +32,7 @@ public class TodoService {
 	}
 
 	public void deleteTodo(int id) {
-		for (int i = todos.size() - 1; i >= 0; i++) {
+		for (int i = todos.size() - 1; i >= 0; i--) {
 			Todo todo = todos.get(i);
 			if (todo.getId() == id) {
 				todos.remove(i);
