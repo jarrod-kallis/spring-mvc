@@ -11,14 +11,14 @@
   <%
   	Date date = new Date();
   %>
-  My name is ${name} and my password is ${password}
+  <!-- My name is ${name} and my password is ${password} -->
   <div>
     Current date is
     <%=date%></div>
   <p>
     <font color="red">${errorMessage}</font>
   </p>
-  <form action="/spring-mvc/login" method="POST">
+  <form action="/login" method="POST">
     Name <input name="name" /> Password <input name="password"
       type="password" />
     <button type="submit">Login</button>

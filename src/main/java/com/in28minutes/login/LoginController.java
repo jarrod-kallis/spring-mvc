@@ -1,4 +1,4 @@
-package com.in28minutes.springmvc;
+package com.in28minutes.login;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
+
+	LoginService loginService = new LoginService();
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET) // URL to this
 																	// method
@@ -20,7 +22,12 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String handleLogin(@RequestParam(value = "name") String name, @RequestParam String password,
 			ModelMap model) {
-		model.put("name", name);
-		return "welcome";
+		if (loginService.isUserValid(name, password)) {
+			model.put("name", name);
+			return "welcome";
+		} else {
+			model.put("errorMessage", "Invalid credentials");
+			return "login";
+		}
 	}
 }
