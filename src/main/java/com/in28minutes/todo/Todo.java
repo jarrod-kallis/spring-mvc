@@ -2,12 +2,21 @@ package com.in28minutes.todo;
 
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
 public class Todo {
 	private int id;
 	private String user;
+
+	// Hibernate validator - pom.xml
+	@Size(min = 6, message = "Enter at least 6 characters")
 	private String description;
+
 	private Date targetDate;
 	private boolean isDone;
+
+	public Todo() {
+	}
 
 	public Todo(int id, String user, String description, Date targetDate, boolean isDone) {
 		super();

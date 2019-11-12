@@ -2,9 +2,12 @@ package com.in28minutes.todo;
 
 import java.util.Date;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,14 +28,24 @@ public class TodoController {
 	}
 
 	@RequestMapping(value = "/add-todo", method = RequestMethod.GET)
-	public String showTodoPage() {
+	public String showTodoPage(ModelMap model) {
+		model.put("todo", new Todo(0, model.get("name").toString(), "", new Date(), false));
 		return "todo";
 	}
 
+	// Command Bean Tag will map the individual form elements to the Todo model
+	// so you don't have to pass the fields individually
+	// Binding Result holds any validation errors
+	// NB!! It seems that these two, '@Valid Todo todo, BindingResult result',
+	// have to be next to each other in the args list
 	@RequestMapping(value = "/add-todo", method = RequestMethod.POST)
-	public String addTodo(@RequestParam String description, ModelMap model) {
+	public String addTodo(@Valid Todo todo, BindingResult result, ModelMap model) {
+		if (result.hasErrors()) {
+			return "todo";
+		}
+
 		String username = model.get("name").toString();
-		service.addTodo(username, description, new Date(), false);
+		service.addTodo(username, todo.getDescription(), new Date(), false);
 
 		// model.put("todos", service.retrieveTodos(username));
 		// return "todos";
