@@ -1,30 +1,36 @@
-<!-- Command Bean Tag -->
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-  pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
-  rel="stylesheet">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add Todo</title>
-</head>
-<body>
-  <div class="container">
+<%@ include file="common/header.jspf"%>
+<%@ include file="common/navigation.jspf"%>
+<div class="container">
+  <c:set var="todo" value="${todo}" />
+  <c:if test="${todo.id == 0}">
     <h1>Add a Todo</h1>
-    <form:form method="post" commandName="todo">
-      <fieldset class="form-group">
-        <form:label path="description">Description</form:label>
-        <form:input path="description" type="text" class="form-control"
-          required="required" />
-        <form:errors path="description" cssClass="text-error" />
-      </fieldset>
-      <button class="btn btn-success" type="submit">Add</button>
-    </form:form>
-  </div>
-
-  <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
-  <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</body>
-</html>
+  </c:if>
+  <c:if test="${todo.id > 0}">
+    <h1>Update a Todo</h1>
+  </c:if>
+  <form:form method="post" commandName="todo">
+    <fieldset class="form-group">
+      <form:label path="description">Description</form:label>
+      <form:input path="description" type="text" class="form-control"
+        required="required" />
+      <form:errors path="description" cssClass="text-error" />
+    </fieldset>
+    <fieldset class="form-group">
+      <form:label path="targetDate">Target Date</form:label>
+      <form:input id="targetDate" path="targetDate" type="text"
+        class="form-control" required="required" />
+      <form:errors path="targetDate" cssClass="text-error" />
+    </fieldset>
+    <button class="btn btn-success" type="submit">
+      <c:if test="${todo.id == 0}">Add</c:if>
+      <c:if test="${todo.id > 0}">Update</c:if>
+    </button>
+  </form:form>
+</div>
+<%@ include file="common/external-scripts.jspf"%>
+<script>
+	$('#targetDate').datepicker({
+		format : 'dd/mm/yyyy'
+	});
+</script>
+<%@ include file="common/footer.jspf"%>

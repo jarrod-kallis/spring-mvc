@@ -1,0 +1,18 @@
+<!-- Command Bean Tag -->
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<!-- Import JSP Standard Tag Library -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- Formatter Library -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+  pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Maven Dependencies -> boostrap-3.3.6.jar -> META-INF -> resources -> webjars -> bootstrap -> etc... -->
+<link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+  rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Todos</title>
+</head>
+<body>

@@ -1,27 +1,28 @@
 <%@page import="java.util.Date"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-  pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Login From JSP</title>
-</head>
-<body>
-  <%
-  	Date date = new Date();
-  %>
-  <!-- My name is ${name} and my password is ${password} -->
+<%@ include file="common/header.jspf"%>
+<%@ include file="common/navigation.jspf"%>
+<%
+	Date date = new Date();
+%>
+<!-- My name is ${name} and my password is ${password} -->
+<div class="container">
   <div>
     Current date is
-    <%=date%></div>
+    <%=date%>
+  </div>
   <p>
     <font color="red">${errorMessage}</font>
   </p>
   <form action="/login" method="POST">
-    Name <input name="name" /> Password <input name="password"
-      type="password" />
-    <button type="submit">Login</button>
+    <fieldset class="form-group">
+      <label>Name</label> <input name="name" type="text"
+        class="form-control" required="required" />
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Password</label> <input name="password" type="password"
+        class="form-control" required="required" />
+    </fieldset>
+    <button class="btn btn-primary" type="submit">Login</button>
   </form>
-</body>
-</html>
+</div>
+<%@ include file="common/footer.jspf"%>
