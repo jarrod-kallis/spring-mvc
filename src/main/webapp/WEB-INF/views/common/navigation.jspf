@@ -4,8 +4,15 @@
   </div>
   <div class="navbar-collapse">
     <ul class="nav navbar-nav">
-      <li class="${requestScope['javax.servlet.forward.request_uri'] == '/' ? 'active' : ''}"><a href="/">Home</a></li>
-      <li class="${requestScope['javax.servlet.forward.request_uri'] == '/todos' ? 'active' : ''}"><a href="/todos">Todos</a></li>
+      <li
+        class="${requestScope['javax.servlet.forward.request_uri'] == '/' ? 'active' : ''}"><a
+        href="/">Home</a></li>
+      <li
+        class="${requestScope['javax.servlet.forward.request_uri'].indexOf('todo') > -1 ? 'active' : ''}"><a
+        href="/todos">Todos</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout">Logout</a></li>
     </ul>
   </div>
 </nav>
