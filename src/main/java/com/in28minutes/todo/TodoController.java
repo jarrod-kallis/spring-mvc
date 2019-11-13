@@ -15,11 +15,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-// Use the session attribute
-@SessionAttributes("name")
 public class TodoController {
 	@Autowired
 	TodoService service;
@@ -34,14 +31,18 @@ public class TodoController {
 
 	@RequestMapping(value = "/todos", method = RequestMethod.GET)
 	public String retrieveTodos(ModelMap model) {
-		model.put("todos", service.retrieveTodos(model.get("name").toString()));
+		model.put("todos", service.retrieveTodos(getLoggedInUserName()));
 
 		return "todos";
 	}
 
+	private String getLoggedInUserName() {
+		return "user";
+	}
+
 	@RequestMapping(value = "/add-todo", method = RequestMethod.GET)
 	public String showAddTodoPage(ModelMap model) {
-		model.put("todo", new Todo(0, model.get("name").toString(), "", new Date(), false));
+		model.put("todo", new Todo(0, getLoggedInUserName(), "", new Date(), false));
 		return "todo";
 	}
 
@@ -56,7 +57,7 @@ public class TodoController {
 			return "todo";
 		}
 
-		String username = model.get("name").toString();
+		String username = getLoggedInUserName();
 		service.addTodo(username, todo.getDescription(), new Date(), false);
 
 		// model.put("todos", service.retrieveTodos(username));
