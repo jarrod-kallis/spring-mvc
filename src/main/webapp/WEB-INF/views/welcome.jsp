@@ -1,7 +1,9 @@
 <%@ include file="common/header.jspf"%>
 <%@ include file="common/navigation.jspf"%>
 <div class="container">
-  Welcome <b>${name}</b> <br /> Now you can <a href="/todos">manage
-    your todos</a>
+  <spring:message code="welcome" />
+  <b>${name}</b> <br />
+  <spring:message code="now-you-can" />
+  <a href="/todos"><spring:message code="manage-your-todos" /></a>
 </div>
 <%@ include file="common/footer.jspf"%>

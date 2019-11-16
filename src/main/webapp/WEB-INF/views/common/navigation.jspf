@@ -1,3 +1,5 @@
+<!-- Contains ability to do internalisation -->
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <nav role="navigation" class="navbar navbar-default">
   <div class="">
     <a href="/" class="navbar-brand">Spring MVC</a>
@@ -6,7 +8,7 @@
     <ul class="nav navbar-nav">
       <li
         class="${requestScope['javax.servlet.forward.request_uri'] == '/' ? 'active' : ''}"><a
-        href="/">Home</a></li>
+        href="/"><spring:message code="home"/></a></li>
       <li
         class="${requestScope['javax.servlet.forward.request_uri'].indexOf('todo') > -1 ? 'active' : ''}"><a
         href="/todos">Todos</a></li>

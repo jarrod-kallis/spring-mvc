@@ -20,6 +20,26 @@
 	<!-- Allows us to import files from inside the Maven Dependencies jar's 
 		resources folder -->
 	<mvc:resources mapping="/webjars/**" location="/webjars/" />
+	
+	<!-- Internalisation: Need to add '?language=fr' to URL -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<!-- Get the language specific captions from 'messages_en.properties' -->
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
+
+	<mvc:interceptors>
+		<bean id="localeChangeInterceptor"
+			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="language" />
+		</bean>
+	</mvc:interceptors>
 
 	<mvc:annotation-driven />
 

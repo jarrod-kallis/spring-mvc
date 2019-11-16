@@ -1,5 +1,7 @@
 <!-- Command Bean Tag -->
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<!-- Contains ability to do internalisation -->
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!-- Import JSP Standard Tag Library -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- Formatter Library -->
