@@ -22,8 +22,8 @@
       <form:errors path="targetDate" cssClass="text-error" />
     </fieldset>
     <button class="btn btn-success" type="submit">
-      <c:if test="${todo.id == 0}">Add</c:if>
-      <c:if test="${todo.id > 0}">Update</c:if>
+      <c:if test="${todo.id == 0}"><spring:message code="add"/></c:if>
+      <c:if test="${todo.id > 0}"><spring:message code="update"/></c:if>
     </button>
   </form:form>
 </div>
